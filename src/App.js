@@ -1,25 +1,3 @@
-// import HomePage from "./component/HomePage";
-// import AddItem from "./feature/item/AddItem";
-// import IndividualItem from "./feature/item/IndividualItem";
-// import Login from "./feature/auth/Login";
-// import PersistLogin from "./feature/auth/PersistLogin";
-// import Logout from "./feature/auth/Logout";
-// import ListUser from "./feature/user/ListUser";
-// import Prefetch from "./feature/auth/Prefetch";
-// import NotFound from "./component/NotFound";
-// import RootLayout from "./component/RootLayout";
-// import AddUser from "./feature/user/AddUser";
-// import EditUser from "./feature/user/EditUser";
-// import RequireAuth from "./feature/auth/RequireAuth";
-
-// import ResetPassword from "./feature/auth/ResetPassword";
-// import Test from "./component/Test";
-// import EditItem from "./feature/item/EditItem";
-// import UserItemsGridList from "./feature/item/UserListItem";
-// import UserSetting from "./feature/user/UserSetting";
-// import ListItem from "./feature/item/ListItem";
-
-// import EmailConfirm from "./feature/auth/EmailConfirm";
 import { Suspense, lazy } from "react";
 import { ROLE } from "./config/ROLE";
 import { Routes, Route } from "react-router-dom";
@@ -44,6 +22,7 @@ const UserListItem = lazy(() => import(`./feature/item/UserListItem`));
 const UserSetting = lazy(() => import(`./feature/user/UserSetting`));
 const ListItem = lazy(() => import(`./feature/item/ListItem`));
 const EmailConfirm = lazy(() => import(`./feature/auth/EmailConfirm`));
+const LoadingComponent = lazy(() => import(`./lib/LoadingComponent`));
 
 function App() {
   return (
@@ -51,7 +30,7 @@ function App() {
       <Routes>
         <Route
           element={
-            <Suspense fallback="prefetch is loading...">
+            <Suspense fallback={<LoadingComponent />}>
               <Prefetch />
             </Suspense>
           }
