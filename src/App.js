@@ -26,7 +26,7 @@ const LoadingComponent = lazy(() => import(`./lib/LoadingComponent`));
 
 function App() {
   return (
-    <Suspense fallback="route is loading...">
+    <Suspense fallback={<LoadingComponent />}>
       <Routes>
         <Route
           element={
